@@ -30,12 +30,10 @@ main{
     width: 70%;
     margin: 0 auto;
     padding-top: 40px;
-    border: 1px solid white;
   }
 
   .card-wrapper{
     width: 100%;
-    border: 1px solid white;
 
   }
 }
