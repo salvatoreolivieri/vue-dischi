@@ -32,9 +32,8 @@ export default {
   background-color: $secondary-color;
   padding: 10px;
   width: calc((100% / 5) - 20px);
-  padding-bottom: 45px;
   margin:0px 10px;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 
   .img-container{
 
