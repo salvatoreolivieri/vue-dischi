@@ -34,6 +34,8 @@ name: "HeaderComponent"
 <style lang="scss" scoped>
 
 @import "../assets/style/var";
+@import "../assets/style/mixin";
+@import "../assets/style/general";
 
 header{
   height: 110px;
@@ -66,7 +68,6 @@ header{
     border: none;
     
   }
-
 
 }
 
