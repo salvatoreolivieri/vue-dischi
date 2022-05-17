@@ -2,7 +2,9 @@
   <main>
     <div class="sc-container">
       <div class="card-wrapper d-flex flex-wrap">
-        <CardComponent />
+        <CardComponent
+        v-for="(item,index) in musicArray" :key="index" :musicObject="item"
+        />
       </div>
     </div>
   </main>
@@ -10,10 +12,35 @@
 
 <script>
 import CardComponent from './CardComponent.vue';
+import axios from "axios"
+
 export default {
     name: "MainComponent",
-    components: { CardComponent }
+    components: { CardComponent },
+
+data(){
+  return {
+    baseURL: "https://flynn.boolean.careers/exercises/api/array/music",
+    musicArray:[],
+    isLoaded : false
+  }
+},
+
+mounted(){
+  this.apiRequest()
+},
+
+methods: {
+  apiRequest(){
+    axios.get(this.baseURL)
+    .then(result => {
+      this.musicArray = result.data.response;
+      console.log(this.musicArray);
+    })
+  }
+},
 }
+
 </script>
 
 <style lang="scss" scoped>

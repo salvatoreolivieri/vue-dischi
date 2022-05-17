@@ -2,13 +2,13 @@
   <div class="sc-card">
 
     <div class="img-container">
-      <img src="../assets/img/Antares.jpg" alt="">
+      <img :src="musicObject.poster" alt="">
     </div>
 
     <div class="text-center my-2">
-      <h4>Antares</h4>
-      <span>Ours Samplus</span><br>
-      <span>2004</span>
+      <h4>{{musicObject.title}}</h4>
+      <span>{{musicObject.author}}</span><br>
+      <span>{{musicObject.year}}</span>
     </div>
   </div>
 </template>
@@ -16,6 +16,9 @@
 <script>
 export default {
   name: "CardComponent",
+  props: {
+    musicObject : Object
+    }
 }
 </script>
 

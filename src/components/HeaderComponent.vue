@@ -14,8 +14,9 @@
       <div class="element-container">
           <select name="" id="">
             <option selected value="">Seleziona un genere</option>
-            <option value="">Rap</option>
+            <option value="">Pop</option>
             <option value="">Rock</option>
+            <option value="">Metal</option>
             <option value="">Jazz</option>
           </select>
       </div>
