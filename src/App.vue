@@ -23,7 +23,10 @@ export default {
 
 <style lang="scss">
 
-@import "./assets/style/general"
+@import "./assets/style/var";
+@import "./assets/style/mixin";
+@import "./assets/style/general";
+
 
 
 </style>
