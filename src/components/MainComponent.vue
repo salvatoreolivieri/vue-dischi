@@ -1,9 +1,14 @@
 <template>
   <main>
+
+    <NavComponent 
+    @startSearch="filtraGenere"
+    />
+
     <div class="sc-container">
       <div v-if="isLoaded" class="card-wrapper d-flex flex-wrap">
         <CardComponent
-        v-for="(item,index) in musicArray" :key="index" :musicObject="item"
+        v-for="(item,index) in filteredMusicGenre" :key="index" :musicObject="item"
         />
       </div>
 
@@ -18,18 +23,21 @@
 </template>
 
 <script>
+import NavComponent from './NavComponent.vue';
 import CardComponent from './CardComponent.vue';
 import axios from "axios"
 
 export default {
     name: "MainComponent",
-    components: { CardComponent },
+    components: {NavComponent, CardComponent },
 
 data(){
   return {
     baseURL: "https://flynn.boolean.careers/exercises/api/array/music",
     musicArray:[],
-    isLoaded : false
+    isLoaded : false,
+    selectedItem: ""
+
   }
 },
 
@@ -45,8 +53,39 @@ methods: {
       console.log(this.musicArray);
       this.isLoaded = true
     })
+  },
+  filtraGenere(selected){
+    this.selectedItem = selected
+    console.log("filtra tutti i generi con:", this.selectedItem);
+    console.log(this.filteredMusicGenre);
   }
 },
+
+computed:{
+  filteredMusicGenre(){
+
+    let musicFilteredArray = [];
+        if (this.selectedItem === "all"){
+          musicFilteredArray = this.musicArray;
+        } else {
+          musicFilteredArray = this.musicArray.filter( item => {
+            return item.genre.toUpperCase().includes(this.selectedItem.toUpperCase());
+          })
+        }
+        return musicFilteredArray;
+
+    // let musicFilteredArray = [];
+    // if (musicFilteredArray.length == 0) {
+    //   musicFilteredArray = this.musicArray;
+    // } else{
+    //   musicFilteredArray = this.musicArray.filter(item =>{
+    //     return item.genre.toUpperCase().includes(this.selectedItem.toUpperCase())
+    //   })
+    // }
+    // return musicFilteredArray;
+  }
+}
+
 }
 
 </script>
@@ -69,7 +108,6 @@ main{
 
   .card-wrapper{
     width: 100%;
-    height: calc(100vh - 130px);
   }
 
   .lds-roller {

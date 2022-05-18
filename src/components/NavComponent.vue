@@ -1,34 +1,40 @@
 <template>
 
-  <header>
+  <section class="d-flex justify-content-between align-items-center">
     <div class="container-fluid d-flex justify-content-between align-items-center">
 
       <div class="img-container">
         <img src="../assets/img/spotify-logo.png" alt="">
       </div>
 
-      <div class="element-container d-flex align-item-center">
-        <input type="text" placeholder="Search">
-      </div>
-
       <div class="element-container">
-          <select name="" id="">
-            <option selected value="">Seleziona un genere</option>
-            <option value="">Pop</option>
-            <option value="">Rock</option>
-            <option value="">Metal</option>
-            <option value="">Jazz</option>
+          <select 
+          @change="$emit('startSearch', selected)"
+          v-model="selected">
+            <option disabled value="">Seleziona un genere</option>
+            <option>all</option>
+            <option>pop</option>
+            <option>rock</option>
+            <option>metal</option>
+            <option>Jazz</option>
           </select>
       </div>
 
     </div>
-  </header>
+  </section>
   
 </template>
 
 <script>
 export default {
-name: "HeaderComponent"
+name: "NavComponent",
+
+data(){
+  return{
+    selected: ''
+  }
+},
+
 }
 </script>
 
@@ -36,16 +42,16 @@ name: "HeaderComponent"
 
 @import "../assets/style/var";
 @import "../assets/style/mixin";
-@import "../assets/style/general";
+// @import "../assets/style/general";
 
-header{
-  height: 110px;
-  padding: 20px;
+section{
+  height: 80px;
+  padding: 0px 10px;
   background-color: $secondary-color;
 
   .img-container{
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
 
     img{
       width: 100%;
